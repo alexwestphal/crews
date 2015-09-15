@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NZ Rover Crews</title>
+    <style type="text/css">
+        * {  box-sizing: border-box;  }
+
+        html, body { height: 100%; margin: 0; padding: 0; }
+
+        #info {
+            width: 30%; height: 100%;
+            padding-top: 20px;
+            text-align: center;
+        }
+        #map {
+            position: absolute;
+            top: 0; left: 30%;
+            width: 70%; height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="info">
+    <div>
+        <h2 id="crew_name"></h2>
+        <div id="crew_location"></div>
+    </div>
+</div>
+<div id="map"></div>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    var map, crews;
+
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -41, lng: 173}, zoom: 6,
+            styles: [
+            {
+                "featureType": "administrative",
+                "elementType": "geometry",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            },{
+                "featureType": "poi",
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            },{
+                "featureType": "road",
+                "elementType": "geometry",
+                "stylers": [
+                    { "visibility": "simplified" }
+                ]
+            },{
+                "featureType": "road",
+                "elementType": "labels",
+                "stylers": [
+                    { "visibility": "off" }
+                ]
+            }
+        ]});
+
+        // If crew info was returned first
+        if(crews) renderCrews();
+    }
+
+
+
+    function showCrewInfo(crew) {
+        map.setCenter(crew.position);
+        map.setZoom(10);
+        $("#crew_name").html(crew.name + " Rover Crew");
+        $("#crew_location").html(crew.location);
+    }
+
+    function renderCrews() {
+        var $crewList = $("#crew_list>ul");
+        $.each(crews, function(idx, crew) {
+            $("<li>"+crew.name+" Rover Crew</li>").appendTo($crewList);
+
+            var marker = new google.maps.Marker({
+                position: crew.position,
+                map: map, title: crew.name + " Rover Crew"
+            });
+            marker.addListener('click', function() { showCrewInfo(crew); });
+        });
+    }
+
+
+    $.getJSON("./crews.json").done(function(data) {
+        crews = data;
+        // If map was returned first
+        if(map) renderCrews();
+    });
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx3srwef3Zfd0tOTrBLglvD6B8bUvgZgk&callback=initMap"></script>
+</body>
+</html>
