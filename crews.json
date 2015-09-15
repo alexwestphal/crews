@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Deans",
+    "location": "Riccarton, Christchurch",
+    "position": {"lat": -43.5261, "lng": 172.5966}
+  },
+  {
+    "name": "Eastman",
+    "location": "Palmerston North",
+    "position": {"lat": -40.3332, "lng": 175.6328}
+  },
+  {
+    "name": "Mania-O-Roto",
+    "location": "Ashburton",
+    "position": { "lat": -43.9151, "lng": 171.7466 }
+  },
+  {
+    "name": "Manukau",
+    "location": "Manurewa, Auckland",
+    "position": {"lat": -37.0119, "lng": 174.8839}
+  },
+  {
+    "name": "Orongorongo",
+    "location": "Wainuiomato, Wellington",
+    "position": {"lat": -41.2748, "lng": 174.9528}
+  },
+  {
+    "name": "Regal",
+    "location": "Newtown, Wellington",
+    "position": {"lat": -41.3139, "lng": 174.7747}
+  },
+  {
+    "name": "Right Royal",
+    "location": "Epsom, Auckland",
+    "position": {"lat": -36.8902, "lng": 174.7638}
+  },
+  {
+    "name": "Roskill",
+    "location": "Blockhouse Bay, Auckland",
+    "position": {"lat": -36.92202, "lng": 174.7016}
+
+  },
+  {
+    "name": "Whakatu",
+    "location": "Stoke, Nelson",
+    "position": {"lat": -41.3132, "lng": 173.2322}
+  }
+]
